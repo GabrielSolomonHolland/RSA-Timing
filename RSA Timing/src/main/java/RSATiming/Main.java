@@ -6,6 +6,7 @@ RSA Timing assignment
 
 package RSATiming;
 import java.util.Scanner ;
+import java.util.Random ;
 /**
  * @author S535982
  */
@@ -44,13 +45,26 @@ public class Main {
         
         
         Scanner scan = new Scanner(System.in) ;
+        Random rand = new Random() ;
         
         System.out.println("Enter keysize or 0 to randomize: ");
-        int keySize = scan.nextInt() ;
+        long keySize = scan.nextLong() ;
         
         System.out.println("Enter key length or 0 to randomize: ");
-        int keyLen = scan.nextInt() ;
+        long keyLen = scan.nextLong() ;
         
+        
+        //long returnNum  = rand.nextLong() ; //test this
+            
+        if(keySize == 0)
+        {
+            //keySize = rand.longs(long 1000000000000000, long 9999999999999999); //doesn't work for some reason
+            keySize = rand.nextLong();
+        }
+        if(keyLen == 0)
+        {
+            keyLen = rand.nextLong() ;
+        }
     
     
     
@@ -59,5 +73,15 @@ public class Main {
     
     
     }
+    
+  /**
+  public static long rand (String[] args)
+  {
+    Random rand = new Random();
+    long returnNum  = rand.nextLong();
+    
+    return returnNum ;
+  }
+  */
     
 }
