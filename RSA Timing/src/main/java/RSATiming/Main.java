@@ -21,11 +21,12 @@ public class Main {
         // TODO code application logic here
         
         //scanner and random
-        Scanner scan = new Scanner(System.in) ;
+        Scanner stdin = new Scanner(System.in) ;
         Random rand = new Random() ;
         
         
         
+        //commented out trying to find the failure
         /**
         //Take user input for keys (Optional, if desired it randomly generates)
         System.out.println("Enter keysize or 0 to randomize (Keysize should be between 1024 and 4096): ");
@@ -35,10 +36,18 @@ public class Main {
         int keySize = 2048 ;
 
 
-        System.out.println("Enter key length or 0 to randomize (0<x<2,147,483,647): ");
-        int keyLen = scan.nextInt() ;
+        
+        //Information above that doesn't fit in screenshot:
+        //import java.util.Scanner ;
+        //Scanner stdin = new Scanner(System.in) ;
+        System.out.println("Enter key length or 0 to randomize: ");
+        int keyLen = stdin.nextInt() ; //fails here
+        
+        
+        
+        //tried a workaround that had the same problem, doing stdin.nextLine doesn't work either
         //int keyLen = Integer.parseInt(keyLenStr) ;
-
+        //(0<x<2,147,483,647):
         
 
             
