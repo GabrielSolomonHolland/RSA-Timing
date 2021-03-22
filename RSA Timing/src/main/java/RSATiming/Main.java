@@ -2,11 +2,16 @@
 Gabriel Solomon Holland
 RSA Timing assignment
  */
+
+
 package RSATiming;
+import java.util.Scanner ;
 /**
  * @author S535982
  */
 public class Main {
+    
+
 
     /**
      * @param args the command line arguments
@@ -36,6 +41,16 @@ public class Main {
         }
         return encodeTime, decodeTime
          */
+        
+        
+        Scanner scan = new Scanner(System.in) ;
+        
+        System.out.println("Enter keysize or 0 to randomize: ");
+        int keySize = scan.nextInt() ;
+        
+        System.out.println("Enter key length or 0 to randomize: ");
+        int keyLen = scan.nextInt() ;
+        
     
     
     
