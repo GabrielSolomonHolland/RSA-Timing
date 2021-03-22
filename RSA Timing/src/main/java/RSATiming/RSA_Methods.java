@@ -5,6 +5,8 @@
  */
 package RSATiming;
 import java.util.Random ;
+import java.lang.Object ;
+import java.nio.charset.Charset;
 /**
  *
  * @author S535982
@@ -13,9 +15,11 @@ public class RSA_Methods {
     public static long RSATiming(long keysize, int keyLen)
             {
                 //Generate random string
-                 byte[] array = new byte[keyLen]; // length is bounded by 7
+                byte[] array = new byte[keyLen]; // length is bounded by 7
                 new Random().nextBytes(array);
                 String generatedString = new String(array, Charset.forName("UTF-8"));
+                System.out.println(generatedString);
+                
                 return 4;
             }
 }
