@@ -50,25 +50,29 @@ public class Main {
         
         
         //Take user input for keys (Optional, if desired it randomly generates)
-        System.out.println("Enter keysize or 0 to randomize: ");
-        long keySize = scan.nextLong() ;
+        System.out.println("Enter keysize or 0 to randomize (Keysize should be between 1024 and 4096): ");
+        int keySize = scan.nextInt() ;
         
-        System.out.println("Enter key length or 0 to randomize: ");
-        long keyLen = scan.nextLong() ;
+        System.out.println("Enter key length or 0 to randomize (0<x<2,147,483,647): ");
+        int keyLen = scan.nextInt() ;
         
         
         //long returnNum  = rand.nextLong() ; //test this, getting rand to work was complicated
             
         
         //Implement random if they wanted that
+        //Due to keysize not being in the billions we take out that random since the random in range is being buggy
+        /**
         if(keySize == 0)
         {
             //keySize = rand.longs(long 1000000000000000, long 9999999999999999); //doesn't work for some reason
             keySize = rand.nextLong();
         }
+        **/ 
+        
         if(keyLen == 0)
         {
-            keyLen = rand.nextLong() ;
+            keyLen = rand.nextInt() ;
         }
         
         //Call method for RSA
@@ -82,6 +86,8 @@ public class Main {
     
     }
     
+    
+  // Still attempting to make random work :/
   /**
   public static long rand (String[] args)
   {
