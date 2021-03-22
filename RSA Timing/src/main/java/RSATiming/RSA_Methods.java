@@ -10,7 +10,7 @@ package RSATiming;
  * @author S535982
  */
 public class RSA_Methods {
-    public static int RSATiming(int keysize, int keyLen)
+    public static int RSATiming(long keysize, long keyLen)
             {
                 
                 return 4;

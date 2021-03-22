@@ -47,6 +47,9 @@ public class Main {
         Scanner scan = new Scanner(System.in) ;
         Random rand = new Random() ;
         
+        
+        
+        //Take user input for keys (Optional, if desired it randomly generates)
         System.out.println("Enter keysize or 0 to randomize: ");
         long keySize = scan.nextLong() ;
         
@@ -54,8 +57,10 @@ public class Main {
         long keyLen = scan.nextLong() ;
         
         
-        //long returnNum  = rand.nextLong() ; //test this
+        //long returnNum  = rand.nextLong() ; //test this, getting rand to work was complicated
             
+        
+        //Implement random if they wanted that
         if(keySize == 0)
         {
             //keySize = rand.longs(long 1000000000000000, long 9999999999999999); //doesn't work for some reason
@@ -65,6 +70,9 @@ public class Main {
         {
             keyLen = rand.nextLong() ;
         }
+        
+        //Call method for RSA
+        RSA_Methods.RSATiming(keySize, keyLen) ;
     
     
     
