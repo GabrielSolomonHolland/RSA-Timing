@@ -26,29 +26,19 @@ public class Main {
         
         
         
+        /**
         //Take user input for keys (Optional, if desired it randomly generates)
         System.out.println("Enter keysize or 0 to randomize (Keysize should be between 1024 and 4096): ");
-        
-        
-        if(scan.hasNextInt()) //I have never had to use this before I have no clue why this is necessary but my program is destroyed if I don't
-        {
-        int keySize = scan.nextInt() ;
-        }
-        else
-        {
+        int keySize = scan.nextInt() ; //where program fails
+        //int keySize = Integer.parseInt(keySizeStr) ; //work around for scan.nextInt() not working
+        */
         int keySize = 2048 ;
-        }
-        
-        
+
+
         System.out.println("Enter key length or 0 to randomize (0<x<2,147,483,647): ");
-        if(scan.hasNextInt()) //Again, I think this is unnecessary but my program breaks without it
-        {
         int keyLen = scan.nextInt() ;
-        }
-        else
-        {
-        int keyLen = 600;
-        }
+        //int keyLen = Integer.parseInt(keyLenStr) ;
+
         
 
             
