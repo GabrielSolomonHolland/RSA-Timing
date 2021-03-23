@@ -17,9 +17,9 @@ public class RSATestApp {
         String plainText = "Insert a test string here, this will be it for now";
 
         //Will output directly to CSV (hand made csv)
-        File file = new File("RSATiming.csv") ;
-        file.open("w") ;
-        FileWriter writer = new FileWriter("RSATiming.csv");
+        File outputFile = new File("RSATiming.csv") ;
+        outputFile.canWrite() ;
+        FileWriter writer = new FileWriter(outputFile);
         writer.write("Encode Time, Decode Time");
  
         // Generate public and private keys
@@ -39,31 +39,32 @@ public class RSATestApp {
         
         int iters = 50 ; //arbitrary number of iterations
 
+        //declare base values
         double timemult = 1.0/iters;
-        double encodeTime = 0.0 ;
-        double decodeTime = 0.0 ;
+        long encodeTime = (long) 0.0;
+        long decodeTime = (long) 0.0;
         
         for (int i=0; i<iters; i++)
         {
-        long start = System.nanoTime(); // using Java's timer
-        
-        String encrypted = encryptMessage(plainText, privateKey);
-        
-        long end = System.nanoTime();
-        
-        encodeTime += (end-start)*timemult;
-        
-        start = System.nanoTime();
-        
-        String decrypt = decryptMessage(encrypted, publicKey);
-        
-        end = System.nanoTime();
-        
-        decodeTime += (end-start)*timemult;
+            long start = System.nanoTime(); // using Java's timer
 
-        System.out.println("Encode time: " + encodeTime + "\nDecode time: " + decodeTime + "\n");
+            String encrypted = encryptMessage(plainText, privateKey);
 
-        writer.write(encodeTime + "," + decodeTime) ;
+            long end = System.nanoTime();
+
+            encodeTime += (end-start)*timemult;
+
+            start = System.nanoTime();
+
+            String decrypt = decryptMessage(encrypted, publicKey);
+
+            end = System.nanoTime();
+
+            decodeTime += (end-start)*timemult;
+
+            System.out.println(encodeTime + "," + decodeTime);
+
+            writer.write(encodeTime + "," + decodeTime) ;
         }
         
         }
