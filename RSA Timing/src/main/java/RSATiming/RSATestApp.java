@@ -37,20 +37,28 @@ public class RSATestApp {
         double decodeTime = 0.0 ;
         
         for (int i=0; i<iters; i++)
-            {
-            float start = System.nanoTime(); // using Java's timer
-            String encrypted = encryptMessage(plainText, privateKey);
-            float end = System.nanoTime();
-            encodeTime = (end-start); //use += and timemult to calculate average? testing without it
-            start = System.nanoTime();
-            String decrypt = decryptMessage(encrypted, publicKey);
-            end = System.nanoTime();
-            decodeTime = (end-start); //same comment as above
+        {
+        long start = System.nanoTime(); // using Java's timer
+        
+        String encrypted = encryptMessage(plainText, privateKey);
+        
+        long end = System.nanoTime();
+        
+        encodeTime += (end-start)*timemult;
+        
+        start = System.nanoTime();
+        
+        String decrypt = decryptMessage(encrypted, publicKey);
+        
+        end = System.nanoTime();
+        
+        decodeTime += (end-start)*timemult;
 
-            System.out.println("Encode time: " + encodeTime + "\nDecode time: " + decodeTime + "\n");
-            }
+        System.out.println("Encode time: " + encodeTime + "\nDecode time: " + decodeTime + "\n");
+        }
         
         }
+
     public static Map<String,Object> getRSAKeys() throws Exception
     {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
