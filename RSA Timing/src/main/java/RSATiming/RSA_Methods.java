@@ -20,7 +20,23 @@ public class RSA_Methods {
                 String generatedString = new String(array, Charset.forName("UTF-8"));
                 System.out.println(generatedString);
                 
-                return 4;
+                
+                int iters = 50 ;
+                double timemult = 1.0/iters;
+                double encodeTime = 0.0 ;
+                double decodeTime = 0.0 ;
+                for (int i=0; i<iters; i++)
+                {
+                float start = System.nanoTime(); // using Java's timer here; you'd pick something else if you're using python/whatever
+                encrypt = encryptMessage(plaintext, privateKey);
+                end = System.nanoTime();
+                encodeTime += (end-start) * timemult;
+                start = System.nanoTime();
+                decrypt = decryptMessage(encrypt, publicKey);
+                end = System.nanoTime();
+                decodeTime += (end-start) * timemult;
+        }
+        return encodeTime, decodeTime
             }
 }
 
