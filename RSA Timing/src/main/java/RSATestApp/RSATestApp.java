@@ -14,7 +14,7 @@ import javax.crypto.Cipher;
 public class RSATestApp {
  
         public static void main(String[] args) throws Exception {
-        String plainText = "This is a LONG fixed length string so we can change keysize bc why not lmao";
+        String plainText = "Dr eloe is a god legend who I will literally die for I love that man to the moon and back hot damn this assignment sucks ass";
 
         //Will output directly to CSV (hand made csv)
         File outputFile = new File("RSATiming.csv") ;
@@ -72,7 +72,7 @@ public class RSATestApp {
     public static Map<String,Object> getRSAKeys() throws Exception
     {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
-        keyPairGenerator.initialize(8192);
+        keyPairGenerator.initialize(2048);
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
         PrivateKey privateKey = keyPair.getPrivate();
         PublicKey publicKey = keyPair.getPublic();
