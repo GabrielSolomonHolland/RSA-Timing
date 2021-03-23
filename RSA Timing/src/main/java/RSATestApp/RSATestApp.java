@@ -5,7 +5,8 @@ import java.security.PublicKey;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
- 
+import java.io.FileWriter ;
+import java.io.File ;
 import javax.crypto.Cipher;
  
 // Java example for RSA encryption/decryption.
@@ -14,6 +15,12 @@ public class RSATestApp {
  
         public static void main(String[] args) throws Exception {
         String plainText = "Insert a test string here, this will be it for now";
+
+        //Will output directly to CSV (hand made csv)
+        File file = new File("RSATiming.csv") ;
+        file.open("w") ;
+        FileWriter writer = new FileWriter("RSATiming.csv");
+        writer.write("Encode Time, Decode Time");
  
         // Generate public and private keys
         Map<String, Object> keys = getRSAKeys();
@@ -22,11 +29,11 @@ public class RSATestApp {
         PublicKey publicKey = (PublicKey) keys.get("public");
  
         String encryptedText = encryptMessage(plainText, privateKey);
-        String descryptedText = decryptMessage(encryptedText, publicKey);
+        String decryptedText = decryptMessage(encryptedText, publicKey);
  
         System.out.println("input:" + plainText);
         System.out.println("encrypted:" + encryptedText);
-        System.out.println("decrypted:" + descryptedText);
+        System.out.println("decrypted:" + decryptedText);
         System.out.println("\n\n") ;
         
         
@@ -55,6 +62,8 @@ public class RSATestApp {
         decodeTime += (end-start)*timemult;
 
         System.out.println("Encode time: " + encodeTime + "\nDecode time: " + decodeTime + "\n");
+
+        writer.write(encodeTime + "," + decodeTime) ;
         }
         
         }
