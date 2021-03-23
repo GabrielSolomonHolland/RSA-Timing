@@ -14,7 +14,7 @@ import javax.crypto.Cipher;
 public class RSATestApp {
  
         public static void main(String[] args) throws Exception {
-        String plainText = "Dr eloe is a god legend who I will literally die for I love that man to the moon and back hot damn this assignment sucks ass";
+        String plainText = "A consistent plaintext for doing the thing with keylength";
 
         //Will output directly to CSV (hand made csv)
         File outputFile = new File("RSATiming.csv") ;
@@ -52,7 +52,7 @@ public class RSATestApp {
 
             long end = System.nanoTime();
 
-            encodeTime = (long) ((end-start)*timemult);
+            encodeTime += (long) ((end-start)*timemult);
 
             start = System.nanoTime();
 
@@ -60,7 +60,7 @@ public class RSATestApp {
 
             end = System.nanoTime();
 
-            decodeTime = (long) ((end-start)*timemult);
+            decodeTime += (long) ((end-start)*timemult);
 
             System.out.println(encodeTime + "," + decodeTime);
 
@@ -72,7 +72,7 @@ public class RSATestApp {
     public static Map<String,Object> getRSAKeys() throws Exception
     {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
-        keyPairGenerator.initialize(2048);
+        keyPairGenerator.initialize(8192);
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
         PrivateKey privateKey = keyPair.getPrivate();
         PublicKey publicKey = keyPair.getPublic();
