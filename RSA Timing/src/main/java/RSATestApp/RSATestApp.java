@@ -52,7 +52,7 @@ public class RSATestApp {
 
             long end = System.nanoTime();
 
-            encodeTime += (end-start)*timemult;
+            encodeTime = (long) ((end-start)*timemult);
 
             start = System.nanoTime();
 
@@ -60,11 +60,11 @@ public class RSATestApp {
 
             end = System.nanoTime();
 
-            decodeTime += (end-start)*timemult;
+            decodeTime = (long) ((end-start)*timemult);
 
             System.out.println(encodeTime + "," + decodeTime);
 
-            writer.write(encodeTime + "," + decodeTime) ;
+            //writer.write(encodeTime + "," + decodeTime) ;
         }
         
         }
