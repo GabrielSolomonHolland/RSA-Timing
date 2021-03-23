@@ -35,8 +35,8 @@ public class Main {
         */
         int keySize = 2048 ;
 
-
-        
+        //just nuke the whole program
+        /**
         //Information above that doesn't fit in screenshot:
         //import java.util.Scanner ;
         //Scanner stdin = new Scanner(System.in) ;
@@ -72,7 +72,7 @@ public class Main {
     
     
     
-    
+    */
     }
     
     

@@ -27,11 +27,28 @@ public class RSATestApp {
         System.out.println("input:" + plainText);
         System.out.println("encrypted:" + encryptedText);
         System.out.println("decrypted:" + descryptedText);
+        
+        
+        int iters = 50 ;
+                double timemult = 1.0/iters;
+                double encodeTime = 0.0 ;
+                double decodeTime = 0.0 ;
+                for (int i=0; i<iters; i++)
+                {
+                float start = System.nanoTime(); // using Java's timer here; you'd pick something else if you're using python/whatever
+                String encrypted = encryptMessage(plainText, privateKey);
+                float end = System.nanoTime();
+                encodeTime += (end-start) * timemult;
+                start = System.nanoTime();
+                String decrypt = decryptMessage(encrypted, publicKey);
+                end = System.nanoTime();
+                decodeTime += (end-start) * timemult;
  
     }
  
     // Get RSA keys. Key size 2048 bits.
-    private static Map<String,Object> getRSAKeys() throws Exception {
+
+    public static Map<String,Object> getRSAKeys() throws Exception {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
         keyPairGenerator.initialize(2048);
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
@@ -44,13 +61,13 @@ public class RSATestApp {
         return keys;
     }
  
-    private static String decryptMessage(String encryptedText, PublicKey publicKey) throws Exception {
+    public static String decryptMessage(String encryptedText, PublicKey publicKey) throws Exception {
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.DECRYPT_MODE, publicKey);
         return new String(cipher.doFinal(Base64.getDecoder().decode(encryptedText)));
     }
  
-    private static String encryptMessage(String plainText, PrivateKey privateKey) throws Exception {
+    public static String encryptMessage(String plainText, PrivateKey privateKey) throws Exception {
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.ENCRYPT_MODE, privateKey);
         return Base64.getEncoder().encodeToString(cipher.doFinal(plainText.getBytes()));
