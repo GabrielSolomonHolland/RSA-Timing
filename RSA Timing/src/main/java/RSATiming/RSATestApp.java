@@ -12,7 +12,7 @@ import javax.crypto.Cipher;
 // Uses strong encryption with 2048 key size.
 public class RSATestApp {
  
-    public static void main(String[] args) throws Exception {
+        public static void main(String[] args) throws Exception {
         String plainText = "Insert a test string here, this will be it for now";
  
         // Generate public and private keys
@@ -27,9 +27,11 @@ public class RSATestApp {
         System.out.println("input:" + plainText);
         System.out.println("encrypted:" + encryptedText);
         System.out.println("decrypted:" + descryptedText);
+        System.out.println("\n\n") ;
         
         
-        int iters = 50 ;
+        int iters = 50 ; //arbitrary number of iterations
+
         double timemult = 1.0/iters;
         double encodeTime = 0.0 ;
         double decodeTime = 0.0 ;
@@ -39,17 +41,16 @@ public class RSATestApp {
             float start = System.nanoTime(); // using Java's timer
             String encrypted = encryptMessage(plainText, privateKey);
             float end = System.nanoTime();
-            encodeTime += (end-start) * timemult;
+            encodeTime = (end-start); //use += and timemult to calculate average? testing without it
             start = System.nanoTime();
             String decrypt = decryptMessage(encrypted, publicKey);
             end = System.nanoTime();
-            decodeTime += (end-start) * timemult;
-            }
-        System.out.println("Encode time: " + encodeTime + "\n Decode time: " + decodeTime);
- 
-    // Get RSA keys. Key size 2048 bits.
-    }
+            decodeTime = (end-start); //same comment as above
 
+            System.out.println("Encode time: " + encodeTime + "\nDecode time: " + decodeTime + "\n");
+            }
+        
+        }
     public static Map<String,Object> getRSAKeys() throws Exception
     {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
