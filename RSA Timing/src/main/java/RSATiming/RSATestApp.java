@@ -35,7 +35,7 @@ public class RSATestApp {
                 double decodeTime = 0.0 ;
                 for (int i=0; i<iters; i++)
                 {
-                float start = System.nanoTime(); // using Java's timer here; you'd pick something else if you're using python/whatever
+                float start = System.nanoTime(); // using Java's timer
                 String encrypted = encryptMessage(plainText, privateKey);
                 float end = System.nanoTime();
                 encodeTime += (end-start) * timemult;
@@ -43,12 +43,13 @@ public class RSATestApp {
                 String decrypt = decryptMessage(encrypted, publicKey);
                 end = System.nanoTime();
                 decodeTime += (end-start) * timemult;
- 
-    }
+                }
  
     // Get RSA keys. Key size 2048 bits.
+    }
 
-    public static Map<String,Object> getRSAKeys() throws Exception {
+    public static Map<String,Object> getRSAKeys() throws Exception
+    {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
         keyPairGenerator.initialize(2048);
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
