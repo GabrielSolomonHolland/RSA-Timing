@@ -14,7 +14,7 @@ import javax.crypto.Cipher;
 public class RSATestApp {
  
         public static void main(String[] args) throws Exception {
-        String plainText = "Insert a test string here, this will be it for now";
+        String plainText = "Jacob K is a small pp furry whom I have a great amount of respect for Dr. Eloe plz don't decode these lmao";
 
         //Will output directly to CSV (hand made csv)
         File outputFile = new File("RSATiming.csv") ;
