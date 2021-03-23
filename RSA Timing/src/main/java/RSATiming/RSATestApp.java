@@ -13,7 +13,7 @@ import javax.crypto.Cipher;
 public class RSATestApp {
  
     public static void main(String[] args) throws Exception {
-        String plainText = "Hello World!";
+        String plainText = "Insert a test string here, this will be it for now";
  
         // Generate public and private keys
         Map<String, Object> keys = getRSAKeys();
@@ -30,20 +30,22 @@ public class RSATestApp {
         
         
         int iters = 50 ;
-                double timemult = 1.0/iters;
-                double encodeTime = 0.0 ;
-                double decodeTime = 0.0 ;
-                for (int i=0; i<iters; i++)
-                {
-                float start = System.nanoTime(); // using Java's timer
-                String encrypted = encryptMessage(plainText, privateKey);
-                float end = System.nanoTime();
-                encodeTime += (end-start) * timemult;
-                start = System.nanoTime();
-                String decrypt = decryptMessage(encrypted, publicKey);
-                end = System.nanoTime();
-                decodeTime += (end-start) * timemult;
-                }
+        double timemult = 1.0/iters;
+        double encodeTime = 0.0 ;
+        double decodeTime = 0.0 ;
+        
+        for (int i=0; i<iters; i++)
+            {
+            float start = System.nanoTime(); // using Java's timer
+            String encrypted = encryptMessage(plainText, privateKey);
+            float end = System.nanoTime();
+            encodeTime += (end-start) * timemult;
+            start = System.nanoTime();
+            String decrypt = decryptMessage(encrypted, publicKey);
+            end = System.nanoTime();
+            decodeTime += (end-start) * timemult;
+            }
+        System.out.println("Encode time: " + encodeTime + "\n Decode time: " + decodeTime);
  
     // Get RSA keys. Key size 2048 bits.
     }
